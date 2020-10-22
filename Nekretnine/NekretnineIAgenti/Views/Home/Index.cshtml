@@ -1,0 +1,193 @@
+﻿@section Scripts {
+    @Scripts.Render("~/Scripts/Skripta.js")
+}
+
+<div class="row" style="width: 80%; margin: 0 auto; padding: 10px; position: relative;">
+    <div class="col-sm-4" id="registracijaIPrijava" style="width: 100%; text-align: center">
+        <h3><b>Korisnik nije prijavljen na sistem!</b></h3>
+        <br />
+        <button class="btn btn-info" id="btnRegistracija" style="margin-right: 10%">Registracija</button>
+        <button class="btn btn-info" id="btnPrijava" style="margin-left: 10%">Prijava</button>
+    </div>
+
+    <div class="col-sm-4" id="registracija" style="display: none">
+        <button class="btn btn-warning" id="btnPocetak">Pocetak</button>
+        <br />
+        <br />
+        <form method="post" action="post/" id="registracija">
+            <h3>Registracija</h3>
+            <div class="form-group">
+                <label>Email</label>
+                <input class="form-control" type="text" id="regEmail" />
+            </div>
+            <div class="form-group">
+                <label>Lozinka</label>
+                <input class="form-control" type="password" id="regLoz" />
+            </div>
+            <div class="form-group">
+                <label>Potvrdi Lozinku</label>
+                <input class="form-control" type="password" id="regLoz2" />
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-success">Registracija</button>
+            </div>
+        </form>
+        <div class="form-group">
+            <button type="submit" class="btn btn-default" id="btnPrijava">Prijava</button>
+        </div>
+    </div>
+    <div class="col-sm-4" id="prijava" style="display: none">
+        <button class="btn btn-warning" id="btnPocetak">Pocetak</button>
+        <br />
+        <form method="post" action="post/" id="prijava">
+            <h3>Prijava</h3>
+            <div class="form-group">
+                <label>Email</label>
+                <input class="form-control" type="text" id="priEmail" />
+            </div>
+            <div class="form-group">
+                <label>Lozinka</label>
+                <input class="form-control" type="password" id="priLoz" />
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-success">Prijava</button>
+            </div>
+        </form>
+    </div>
+</div>
+<br />
+<div class="row">
+    <p id="info"></p>
+</div>
+<hr />
+<div class="row">
+    <div class="col-sm-4" id="odjava">
+        <button class="btn btn-warning" id="odjavise">Odjava</button>
+    </div>
+    <br />
+    <div class="container" style="display:inline-block">
+        <div id="formsearch" style="display:none; float: left; text-align: center;">
+            <form method="post" action="post/" id="searchForm">
+                <h2>Pretraga po kvadraturi:</h2>
+                <p><label>Od: <input type="number" id="miniKvadratura"></label></p>
+                <br />
+                <p><label>Do: <input type="number" id="maxiKvadratura"></label></p>
+                <br />
+                <div class="row">
+                    <button class="button btn-primary">Pretraga</button>
+                    <input class="button btn-primary" type="button" value="Reset" id="btnReset" />
+                </div>
+            </form>
+        </div>
+        <div id="nekretnine" style="float: left; margin-left: 10%">
+        </div>
+    </div>
+    <br />
+
+    <div class="row">
+        <div class="col-lg-offset-4 col-lg-4" id="formNekretninaDiv" style="display:none">
+            <h2>Izmena nekretnine</h2>
+            <br />
+            <form class="form-horizontal" method="put" action="put/" id="nekretninaForm">
+                <div class="form-group">
+                    <label class="control-label col-sm-pull-4zz"> Agent: </label>
+                    <div class="col-sm-8" style="float:right">
+                        <select class="form-control" id="agent"></select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-pull-4"> Agencijska oznaka: </label>
+                    <div class="col-sm-8" style="float:right">
+                        <input type="text" class="form-control" id="oznaka" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-pull-4"> Mesto: </label>
+                    <div class="col-sm-8" style="float:right">
+                        <input type="text" class="form-control" id="mesto" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-pull-4">Godina izgradnje: </label>
+                    <div class="col-sm-8" style="float:right">
+                        <input type="number" class="form-control" id="izgradnja" min="1900" max="2018" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-pull-4">Kvadratura: </label>
+                    <div class="col-sm-8" style="float:right">
+                        <input type="number" class="form-control" id="kvadratura" min="2.00" max="99999.99" step="0.01">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-pull-4">Cena: </label>
+                    <div class="col-sm-8" style="float:right">
+                        <input type="number" class="form-control" id="cena" min="1" max="100000">
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <button class="button btn-primary">Izmeni</button>
+                    <input class="button btn-primary" type="button" value="Odustajanje" id="btnOdustajanje" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-offset-4 col-lg-4" id="formaDodavanja" style="display:none">
+            <h2>Dodaj nekretninu</h2>
+            <br />
+            <form class="form-horizontal" method="post" action="post/" id="nekretninaNova">
+                <div class="form-group">
+                    <label class="control-label col-sm-pull-4"> Agent: </label>
+                    <div class="col-sm-8" style="float:right">
+                        <select class="form-control" id="agent1"></select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-pull-4"> Agencijska oznaka: </label>
+                    <div class="col-sm-8" style="float:right">
+                        <input type="text" class="form-control" id="oznaka1" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-pull-4"> Mesto: </label>
+                    <div class="col-sm-8" style="float:right">
+                        <input type="text" class="form-control" id="mesto1" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-pull-4">Godina izgradnje: </label>
+                    <div class="col-sm-8" style="float:right">
+                        <input type="number" class="form-control" id="izgradnja1" min="1900" max="2018" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-pull-4">Kvadratura: </label>
+                    <div class="col-sm-8" style="float:right">
+                        <input type="number" class="form-control" id="kvadratura1" min="2.00" max="99999.99" step="0.01">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-pull-4">Cena: </label>
+                    <div class="col-sm-8" style="float:right">
+                        <input type="number" class="form-control" id="cena1" min="1" max="100000">
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <button type="submit" class="button btn-primary">Dodaj</button>
+                    <input class="button btn-primary" type="button" value="Odustani" id="btnOdustani" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
